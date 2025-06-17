@@ -18,9 +18,9 @@
 
 ## 📸 Screenshots
 
-<img src="./IMG_3243_resized.png" width="400"/>
-<img src="./IMG_3244_resized.png" width="400"/>
 <img src="./IMG_3247_resized.png" width="400"/>
+<img src="./IMG_3244_resized.png" width="400"/>
+<img src="./IMG_3243_resized.png" width="400"/>
 <img src="./IMG_3248_resized.png" width="400"/>
 
 ---
