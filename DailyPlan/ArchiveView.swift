@@ -5,6 +5,7 @@
 //  Created by Antonio Gambone on 15/12/24.
 //
 
+
 import SwiftUI
 import SwiftData
 
@@ -107,12 +108,28 @@ struct ArchiveView: View {
     }
 
     private func restoreItem(_ item: Item) {
+        
         withAnimation {
             item.isArchived = false
+        }
+        
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             do {
                 try modelContext.save()
+                print("✅ Successfully restored item: \(item.title)")
+                
+                
+                if item.startDate > Date() {
+                    NotificationManager.shared.scheduleNotification(for: item)
+                }
             } catch {
-                print("Error saving context: \(error)")
+                print("❌ Error restoring item: \(error)")
+                // Revert the change on error
+                withAnimation {
+                    item.isArchived = true
+                }
+                try? modelContext.save()
             }
         }
     }
